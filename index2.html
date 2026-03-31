@@ -119,15 +119,94 @@
         text-align: center;
         padding: 25px;
     }
+
+    /* Popup styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+.popup-input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* Show popup */
+.popup-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.btn-secondary {
+    background: #ccc;
+    color: #333;
+    margin-left: 10px;
+}
+
+.btn-secondary:hover {
+    background: #aaa;
+}
+
 </style>
 </head>
+
+
+<!-- Newsletter Popup -->
+<div id="newsletterPopup" class="popup-overlay">
+    <div class="popup-box">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>Suscríbete a nuestra newsletter</h2>
+        <p>Recibe novedades sobre eventos, investigación y oportunidades en IBERNAM.</p>
+        
+        <input type="email" placeholder="Tu email" class="popup-input">
+        
+        <button class="btn" onclick="subscribe()">Suscribirme</button>
+        <button class="btn btn-secondary" onclick="closePopup()">Ahora no</button>
+    </div>
+</div>
+
+
+
 <body>
 
 <nav>
     <a href="#about">Sobre Nosotros</a>
     <a href="#research">Investigación</a>
     <a href="#events">Eventos</a>
-    <a href="#join">Únete</a>
+    <a href="#join">Participa</a>
 </nav>
 
 <header>
@@ -200,17 +279,24 @@
 </section>
 
 <section id="join">
-    <h2>Únete a IBERNAM</h2>
-    <p>Hazte miembro para acceder a nuestra red, participar en eventos y colaborar con colegas.</p>
-    <a class="btn" href="mailto:contacto@ibernam.org">Envíanos un correo para unirte →</a>
+    <h2>¿Interesado en conocer más?</h2>
+    <p>Suscríbete a nuestra newsletter para estar al tanto de todas las novedades que trae IBERNAM. </p>
+    <a class="btn" href="">Me interesa →</a> <!-- Formulario newsletter -->
+</section>
+
+<section>
+    <h2>Colabora con IBERNAM</h2>
+    <p>¿Interesado en la labor de nuestra red? Ayúdanos a mejorarla y expandirla. Colaborar con nosotros también tiene sus ventajas: </p>
+    <a class="btn" href="mailto:contacto@ibernam.org">Envíanos un correo para colaborar →</a>
 </section>
 
 <footer>
     <p>&copy; 2026 IBERNAM | <a href="#" style="color:#ffd700">LinkedIn</a> | <a href="#" style="color:#ffd700">Twitter</a></p>
 </footer>
 
+
 <script>
-    // Animación de secciones al hacer scroll
+    // Existing scroll animation
     const sections = document.querySelectorAll('section');
     window.addEventListener('scroll', () => {
         sections.forEach(sec => {
@@ -219,6 +305,38 @@
             if(top < windowHeight - 100) sec.classList.add('show');
         });
     });
+
+    // Popup logic
+    const popup = document.getElementById('newsletterPopup');
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            popup.classList.add('active');
+        }, 1000);
+    });
+
+    function closePopup() {
+        popup.classList.remove('active');
+    }
+
+    // Close when clicking outside the popup box
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            closePopup();
+        }
+    });
+
+    // Close with ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closePopup();
+        }
+    });
+
+    function subscribe() {
+
+    closePopup();
+}
 </script>
 
 </body>
