@@ -1,16 +1,3 @@
-Para lograr que la página se comporte como una aplicación (donde el contenido cambia al hacer clic), necesitamos usar una técnica llamada "Tabs" (Pestañas).
-
-He modificado el código para que:
-
-Estado Inicial: Solo se vean "Sobre Nosotros" e "Investigación".
-
-Interactividad: Al pulsar en el menú superior, se oculte todo lo anterior y aparezca únicamente la sección seleccionada.
-
-Botón Inicio: He añadido que al pulsar en "Sobre Nosotros" o "Investigación" se vuelvan a mostrar ambas como página principal.
-
-Aquí tienes el código actualizado:
-
-HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -62,29 +49,31 @@ HTML
         font-weight: 600;
         cursor: pointer;
         transition: 0.3s;
+        padding: 5px 10px;
+        border-radius: 8px;
     }
-    nav a:hover { color: #3b82f6; }
+    nav a:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
 
     /* LÓGICA DE VISIBILIDAD */
     section {
-        display: none; /* Ocultamos todas por defecto */
+        display: none; /* Ocultas por defecto */
         padding: 60px 20px;
         max-width: 1000px;
         margin: auto;
-        animation: fadeIn 0.5s ease-in;
+        animation: fadeIn 0.6s ease-out;
     }
 
-    /* Clase para mostrar secciones activas */
+    /* Solo la sección con esta clase se muestra */
     section.active {
         display: block;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
+        from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
-    h2 { text-align: center; color: #0369a1; margin-bottom: 40px; }
+    h2 { text-align: center; color: #0369a1; margin-bottom: 40px; font-size: 2.2em; }
 
     .cards { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
 
@@ -99,108 +88,4 @@ HTML
     }
 
     .contenedor-foto { text-align: center; margin: 40px 0; }
-    .foto-seccion { width: 100%; max-width: 800px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-
-    .btn {
-        display: inline-block;
-        background: #0369a1;
-        color: #fff;
-        padding: 14px 35px;
-        border-radius: 50px;
-        text-decoration: none;
-        margin-top: 20px;
-        font-weight: bold;
-    }
-
-    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 50px 20px; margin-top: 60px; }
-</style>
-</head>
-<body>
-
-<nav>
-    <a onclick="mostrarSeccion('inicio')">Sobre Nosotros</a>
-    <a onclick="mostrarSeccion('inicio')">Investigación</a>
-    <a onclick="mostrarSeccion('eventos')">Eventos</a>
-    <a onclick="mostrarSeccion('becas')">Becas</a>
-    <a onclick="mostrarSeccion('join')">Únete</a>
-</nav>
-
-<header>
-    <img src="logo-ibernam.png" alt="IBERNAM" class="header-logo">
-    <p>Conectando Investigadores en Micro y Nanosistemas en la Península Ibérica</p>
-</header>
-
-<section id="SobreNosotros" class="active">
-    <h2>Sobre Nosotros</h2>
-    <p style="text-align: center; font-size: 1.2em; line-height: 1.8;">IBERNAM es una red para investigadores y profesionales en física del estado sólido, fomentando la colaboración e innovación en ciencia de materiales.</p>
-    <div class="contenedor-foto">
-        <img src="foto-red.jpg" alt="Investigadores IBERNAM" class="foto-seccion">
-    </div>
-</section>
-
-<section id="Investigacion" class="active">
-    <h2>Áreas de Investigación</h2>
-    <div class="cards">
-        <div class="card"><h3>Sensores inteligentes</h3><p>Tecnologías, materiales y herramientas de análisis.</p></div>
-        <div class="card"><h3>Microsistemas</h3><p>Desvelando el poder de la pequeña escala.</p></div>
-        <div class="card"><h3>Materiales avanzados</h3><p>Investigando superconductores y aislantes topológicos.</p></div>
-        <div class="card"><h3>Electrónica y Datos</h3><p>Dispositivos innovadores apoyados por AI y Big Data.</p></div>
-    </div>
-</section>
-
-<section id="eventos">
-    <h2>Eventos y Talleres</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Conferencia Anual IBERNAM</h3>
-            <p>15-17 Septiembre 2026</p>
-        </div>
-        <div class="card">
-            <h3>Micromachining Summit</h3>
-            <p>14-17 de junio de 2026</p>
-        </div>
-    </div>
-</section>
-
-<section id="becas">
-    <h2>Becas y Concursos</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Premio Tesis Doctoral</h3>
-            <p>Inscripciones abiertas hasta abril 2026.</p>
-        </div>
-    </div>
-</section>
-
-<section id="join" style="text-align: center;">
-    <h2>Únete a IBERNAM</h2>
-    <p>Hazte miembro para acceder a nuestra red y colaborar con colegas.</p>
-    <a class="btn" href="mailto:contacto@ibernam.org">Enviar correo para unirme →</a>
-</section>
-
-<footer>
-    <p>&copy; 2026 IBERNAM | <a href="#" style="color: #0369a1;">LinkedIn</a> | <a href="#" style="color: #0369a1;">Twitter</a></p>
-</footer>
-
-<script>
-    function mostrarSeccion(idTarget) {
-        // 1. Ocultar todas las secciones
-        const secciones = document.querySelectorAll('section');
-        secciones.forEach(s => s.classList.remove('active'));
-
-        // 2. Lógica especial para "Inicio" (Sobre nosotros + Investigación)
-        if (idTarget === 'inicio') {
-            document.getElementById('SobreNosotros').classList.add('active');
-            document.getElementById('Investigacion').classList.add('active');
-        } else {
-            // 3. Mostrar solo la sección clicada
-            document.getElementById(idTarget).classList.add('active');
-        }
-
-        // 4. Hacer scroll automático arriba para que se vea bien el cambio
-        window.scrollTo({top: 400, behavior: 'smooth'});
-    }
-</script>
-
-</body>
-</html>
+    .foto-seccion { width: 100%; max-width: 800px; border-radius: 20px; box-shadow: 0
