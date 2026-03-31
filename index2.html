@@ -22,11 +22,16 @@
         position: relative;
         overflow: hidden;
     }
-    header h1 {
-        font-size: 3.5em;
-        margin: 0;
-        animation: slideIn 1s ease-out;
+    
+    /* ESTILOS PARA EL LOGO */
+    .header-logo {
+        max-width: 300px; /* Ajusta este valor según el logo */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Centrado horizontal */
+        animation: slideIn 1s ease-out; /* Mantiene la animación original */
     }
+
     header p {
         font-size: 1.3em;
         margin-top: 10px;
@@ -52,7 +57,7 @@
         gap: 20px;
         padding: 15px 0;
         z-index: 1000;
-        backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
+        backdrop-filter: blur(5px);
     }
     nav a {
         color: #fff;
@@ -63,7 +68,7 @@
     nav a:hover { color: #ffd700; }
 
     section {
-        padding: 100px 20px 60px 20px; /* Padding extra para que el nav fijo no tape el título */
+        padding: 100px 20px 60px 20px;
         max-width: 1000px;
         margin: auto;
         opacity: 0;
@@ -71,7 +76,6 @@
         transition: all 0.8s ease-out;
     }
     
-    /* Clase para mostrar secciones con el scroll */
     section.show {
         opacity: 1;
         transform: translateY(0);
@@ -142,7 +146,7 @@
 </nav>
 
 <header>
-    <h1>IBERNAM</h1>
+    <img src="logo-ibernam.png" alt="IBERNAM - Red Española de Micro y Nanosistemas" class="header-logo">
     <p>Conectando Investigadores en Micro y Nanosistemas en la Península Ibérica</p>
 </header>
 
@@ -222,16 +226,13 @@
         sections.forEach(sec => {
             const top = sec.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
-            // Se activa un poco antes para mejor sensación visual
             if(top < windowHeight - 50) {
                 sec.classList.add('show');
             }
         });
     };
 
-    // Ejecutar al cargar para mostrar lo que ya está en pantalla
     window.addEventListener('load', revealSections);
-    // Ejecutar al hacer scroll
     window.addEventListener('scroll', revealSections);
 </script>
 
