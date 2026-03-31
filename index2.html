@@ -15,7 +15,7 @@
     }
     
     header {
-        background: #e0f2fe; /* Azul tenue */
+        background: #e0f2fe;
         color: #0369a1;
         text-align: center;
         padding: 140px 20px 80px 20px;
@@ -27,7 +27,6 @@
         height: auto;
         display: block;
         margin: 0 auto;
-        animation: fadeIn 1.5s ease-in;
     }
 
     nav {
@@ -49,35 +48,34 @@
         text-decoration: none;
         font-weight: 600;
         cursor: pointer;
-        transition: 0.3s;
-        padding: 5px 12px;
+        padding: 8px 15px;
         border-radius: 8px;
+        transition: 0.3s;
     }
-    nav a:hover { background: rgba(3, 105, 161, 0.1); color: #3b82f6; }
+    nav a:hover { background: rgba(3, 105, 161, 0.1); }
 
-    /* LÓGICA DE SECCIONES */
+    /* LÓGICA DE VISIBILIDAD CRUCIAL */
     section {
-        display: none; 
+        display: none !important; /* Oculto por defecto */
         padding: 60px 20px;
         max-width: 1100px;
         margin: auto;
-        animation: fadeInSection 0.6s ease-out;
     }
 
-    section.active { display: block; }
+    section.active {
+        display: block !important; /* Solo se muestra si tiene .active */
+        animation: fadeInSection 0.5s ease-out;
+    }
 
     @keyframes fadeInSection {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     h2 { text-align: center; color: #0369a1; margin-bottom: 40px; font-size: 2.2em; }
 
     /* TARJETAS */
     .cards { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
-
     .card {
         background: #fff;
         padding: 25px;
@@ -86,12 +84,7 @@
         box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         text-align: center;
         border: 1px solid #e2e8f0;
-        transition: transform 0.3s;
     }
-    .card:hover { transform: translateY(-5px); border-color: #0369a1; }
-    .card h3 { color: #0369a1; margin-top: 0; }
-    .card a { color: #3b82f6; text-decoration: none; font-weight: bold; }
-    .card a:hover { text-decoration: underline; }
 
     .contenedor-foto { text-align: center; margin: 40px 0; }
     .foto-seccion { width: 100%; max-width: 800px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
@@ -104,83 +97,4 @@
         border-radius: 50px;
         text-decoration: none;
         margin-top: 20px;
-        font-weight: bold;
-        transition: background 0.3s;
-    }
-    .btn:hover { background: #024d77; }
-
-    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 40px 20px; margin-top: 60px; }
-    footer a { color: #3b82f6; text-decoration: none; margin: 0 10px; }
-</style>
-</head>
-<body>
-
-<nav>
-    <a onclick="cambiarSeccion('SobreNosotros')">Sobre Nosotros</a>
-    <a onclick="cambiarSeccion('Investigacion')">Investigación</a>
-    <a onclick="cambiarSeccion('eventos')">Eventos</a>
-    <a onclick="cambiarSeccion('becas')">Becas</a>
-    <a onclick="cambiarSeccion('join')">Únete</a>
-</nav>
-
-<header>
-    <img src="logo-ibernam.png" alt="IBERNAM" class="header-logo">
-    <p>Conectando Investigadores en Micro y Nanosistemas en la Península Ibérica</p>
-</header>
-
-<section id="SobreNosotros" class="active">
-    <h2>Sobre Nosotros</h2>
-    <p style="text-align: center; font-size: 1.2em; line-height: 1.8; max-width: 800px; margin: 0 auto 40px auto;">
-        IBERNAM es una red para investigadores y profesionales en física del estado sólido, fomentando la colaboración, el intercambio de conocimientos y la innovación en ciencia de materiales.
-    </p>
-    <div class="contenedor-foto">
-        <img src="foto-red.jpg" alt="Encuentro IBERNAM" class="foto-seccion">
-        <p style="font-style: italic; color: #64748b; margin-top: 15px;">Encuentro de la red de investigadores IBERNAM.</p>
-    </div>
-</section>
-
-<section id="Investigacion">
-    <h2>Áreas de Investigación</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Sensores inteligentes</h3>
-            <p>Proponiendo tecnologías, materiales y herramientas de análisis.</p>
-        </div>
-        <div class="card">
-            <h3>Microsistemas y Nanotecnología</h3>
-            <p>Desvelando el poder de la pequeña escala.</p>
-        </div>
-        <div class="card">
-            <h3>Materiales avanzados</h3>
-            <p>Investigando superconductores, aislantes topológicos y más.</p>
-        </div>
-        <div class="card">
-            <h3>Electrónica y Datos</h3>
-            <p>Desarrollo de dispositivos innovadores apoyados por AI y Big Data.</p>
-        </div>
-    </div>
-</section>
-
-<section id="eventos">
-    <h2>Eventos y Talleres</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Conferencia Anual IBERNAM</h3>
-            <p>Únete a expertos para discutir los avances recientes en física del estado sólido.</p>
-            <p><strong>Fecha:</strong> 15-17 Septiembre 2026</p>
-        </div>
-        <div class="card">
-            <h3>Serie de Webinars</h3>
-            <p>Charlas mensuales de científicos líderes en el campo.</p>
-            <p><strong>Próximo:</strong> 10 Abril 2026</p>
-        </div>
-        <div class="card">
-            <h3>Micromachining Summit 2026</h3>
-            <p>Invitación del IMB-CNM (CSIC) en la Universidad de Southampton (Reino Unido).</p>
-            <p><a href="https://es.linkedin.com/posts/redibernam_29th-world-micromachining-summit-activity-7437459898541662208-bVWR" target="_blank">Más información aquí</a></p>
-            <p><strong>Fechas:</strong> 14-17 de junio de 2026</p>
-        </div>
-        <div class="card">
-            <h3>Encuentro IBERNAM - CMC2</h3>
-            <p>Encuentro conjunto con la sociedad francesa en la Universidad de Toulouse.</p>
-            <p><a href="
+        font
