@@ -11,22 +11,23 @@
         padding: 0;
         scroll-behavior: smooth;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #f8fafc; /* Gris azulado muy tenue de fondo */
+        background: #f8fafc;
         color: #334155;
     }
     
     header {
-        background: #3b82f6; /* AZUL MÁS CLARO */
-        color: #fff;
+        background: #e0f2fe; /* AZUL MUCHO MÁS TENUE (Sky Blue) */
+        color: #0369a1; /* Texto azul oscuro para contraste */
         text-align: center;
-        padding: 120px 20px 100px 20px;
+        padding: 140px 20px 80px 20px;
         position: relative;
         overflow: hidden;
     }
     
     .header-logo {
-        max-width: 800px;
-        height: 800px;
+        width: 800px; /* Tamaño solicitado conservado */
+        max-width: 95%; /* Para que no se corte en móviles */
+        height: auto;
         display: block;
         margin: 0 auto;
         animation: slideIn 1s ease-out;
@@ -34,13 +35,31 @@
 
     header p {
         font-size: 1.3em;
-        margin-top: 15px;
-        font-weight: 300;
+        margin-top: 25px;
+        font-weight: 400;
         animation: fadeIn 2s ease-in;
     }
 
+    /* ESTILOS PARA LA NUEVA FOTO */
+    .contenedor-foto {
+        text-align: center;
+        margin: 40px 0;
+    }
+
+    .foto-seccion {
+        width: 100%;
+        max-width: 800px; /* Tamaño de la foto */
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+    .foto-seccion:hover {
+        transform: scale(1.02);
+    }
+
     @keyframes slideIn {
-        from {transform: translateY(-50px); opacity: 0;}
+        from {transform: translateY(-30px); opacity: 0;}
         to {transform: translateY(0); opacity: 1;}
     }
     @keyframes fadeIn {
@@ -52,24 +71,23 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(59, 130, 246, 0.9); /* AZUL CLARO CON TRANSPARENCIA */
+        background: rgba(224, 242, 254, 0.95); /* Nav a juego con el nuevo azul */
         display: flex;
         justify-content: center;
         gap: 25px;
         padding: 18px 0;
         z-index: 1000;
-        backdrop-filter: blur(8px);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     
     nav a {
-        color: #fff;
+        color: #0369a1;
         text-decoration: none;
         font-weight: 600;
-        font-size: 0.95em;
         transition: all 0.3s;
     }
-    nav a:hover { color: #ffd700; transform: scale(1.05); }
+    nav a:hover { color: #3b82f6; transform: scale(1.05); }
 
     section {
         padding: 100px 20px 60px 20px;
@@ -87,10 +105,9 @@
 
     h2 {
         text-align: center;
-        color: #3b82f6; /* AZUL MÁS CLARO EN TÍTULOS */
+        color: #0369a1;
         margin-bottom: 40px;
         font-size: 2.2em;
-        font-weight: 700;
     }
 
     .cards {
@@ -112,28 +129,18 @@
     }
     .card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
-        border-color: #3b82f6;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     }
-
-    .card h3 { color: #1e293b; margin-bottom: 15px; }
 
     .btn {
         display: inline-block;
-        background: #3b82f6; /* BOTÓN AZUL CLARO */
+        background: #0369a1;
         color: #fff;
         padding: 14px 35px;
-        border-radius: 50px; /* Bordes más redondeados para un look moderno */
+        border-radius: 50px;
         text-decoration: none;
         margin-top: 20px;
-        transition: all 0.3s;
         font-weight: bold;
-        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-    }
-    .btn:hover { 
-        background: #2563eb; 
-        box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
-        transform: scale(1.05);
     }
 
     footer {
@@ -143,8 +150,6 @@
         padding: 50px 20px;
         margin-top: 60px;
     }
-    footer a { margin: 0 10px; text-decoration: none; transition: color 0.3s; }
-    footer a:hover { color: #fff; }
 </style>
 </head>
 <body>
@@ -158,22 +163,27 @@
 </nav>
 
 <header>
-    <img src="logo-ibernam.png" alt="IBERNAM - Red Española de Micro y Nanosistemas" class="header-logo">
+    <img src="logo-ibernam.png" alt="IBERNAM" class="header-logo">
     <p>Conectando Investigadores en Micro y Nanosistemas en la Península Ibérica</p>
 </header>
 
 <section id="SobreNosotros">
     <h2>Sobre Nosotros</h2>
-    <p style="text-align: center; font-size: 1.2em; line-height: 1.8; color: #475569;">IBERNAM es una red para investigadores y profesionales en física del estado sólido, fomentando la colaboración, el intercambio de conocimientos y la innovación en ciencia de materiales.</p>
+    <p style="text-align: center; font-size: 1.2em; line-height: 1.8;">IBERNAM es una red para investigadores y profesionales en física del estado sólido, fomentando la colaboración e innovación en ciencia de materiales.</p>
+    
+    <div class="contenedor-foto">
+        <img src="foto-red.jpg" alt="Investigadores IBERNAM" class="foto-seccion">
+        <p style="font-style: italic; color: #64748b; margin-top: 10px;">Encuentro de la red de investigadores IBERNAM.</p>
+    </div>
 </section>
 
 <section id="Investigacion">
     <h2>Áreas de Investigación</h2>
     <div class="cards">
-        <div class="card"><h3>Sensores inteligentes</h3><p>Proponiendo tecnologías, materiales y herramientas de análisis.</p></div>
-        <div class="card"><h3>Microsistemas y Nanotecnología</h3><p>Desvelando el poder de la pequeña escala.</p></div>
-        <div class="card"><h3>Materiales avanzados</h3><p>Investigando superconductores, aislantes topológicos y más.</p></div>
-        <div class="card"><h3>Electrónica y Datos</h3><p>Explorando el desarrollo de dispositivos innovadores apoyados por AI y Big Data.</p></div>
+        <div class="card"><h3>Sensores inteligentes</h3><p>Tecnologías, materiales y herramientas de análisis.</p></div>
+        <div class="card"><h3>Microsistemas</h3><p>Desvelando el poder de la pequeña escala.</p></div>
+        <div class="card"><h3>Materiales avanzados</h3><p>Investigando superconductores y aislantes topológicos.</p></div>
+        <div class="card"><h3>Electrónica y Datos</h3><p>Dispositivos innovadores apoyados por AI y Big Data.</p></div>
     </div>
 </section>
 
@@ -182,12 +192,12 @@
     <div class="cards">
         <div class="card">
             <h3>Conferencia Anual IBERNAM</h3>
-            <p>Únete a expertos para discutir los avances recientes en física del estado sólido.</p>
+            <p>Únete a expertos para discutir los avances en física del estado sólido.</p>
             <p><strong>15-17 Septiembre 2026</strong></p>
         </div>
         <div class="card">
             <h3>Micromachining Summit</h3>
-            <p>Evento sobre microsistemas en la Univ. de Southampton. <a href="#" style="color: #3b82f6;">Ver info.</a></p>
+            <p>Evento sobre microsistemas en la Univ. de Southampton.</p>
             <p><strong>14-17 de junio de 2026</strong></p>
         </div>
     </div>
@@ -200,7 +210,7 @@
 </section>
 
 <footer>
-    <p>&copy; 2026 IBERNAM | <a href="#" style="color:#3b82f6">LinkedIn</a> | <a href="#" style="color:#3b82f6">Twitter</a></p>
+    <p>&copy; 2026 IBERNAM | <a href="#" style="color: #0369a1;">LinkedIn</a> | <a href="#" style="color: #0369a1;">Twitter</a></p>
 </footer>
 
 <script>
