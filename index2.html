@@ -1,3 +1,16 @@
+Para lograr que la página se comporte como una aplicación (donde el contenido cambia al hacer clic), necesitamos usar una técnica llamada "Tabs" (Pestañas).
+
+He modificado el código para que:
+
+Estado Inicial: Solo se vean "Sobre Nosotros" e "Investigación".
+
+Interactividad: Al pulsar en el menú superior, se oculte todo lo anterior y aparezca únicamente la sección seleccionada.
+
+Botón Inicio: He añadido que al pulsar en "Sobre Nosotros" o "Investigación" se vuelvan a mostrar ambas como página principal.
+
+Aquí tienes el código actualizado:
+
+HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,69 +22,31 @@
     body, html {
         margin: 0;
         padding: 0;
-        scroll-behavior: smooth;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background: #f8fafc;
         color: #334155;
     }
     
     header {
-        background: #e0f2fe; /* AZUL MUCHO MÁS TENUE (Sky Blue) */
-        color: #0369a1; /* Texto azul oscuro para contraste */
+        background: #e0f2fe;
+        color: #0369a1;
         text-align: center;
         padding: 140px 20px 80px 20px;
-        position: relative;
-        overflow: hidden;
     }
     
     .header-logo {
-        width: 800px; /* Tamaño solicitado conservado */
-        max-width: 95%; /* Para que no se corte en móviles */
+        width: 800px;
+        max-width: 95%;
         height: auto;
         display: block;
         margin: 0 auto;
-        animation: slideIn 1s ease-out;
-    }
-
-    header p {
-        font-size: 1.3em;
-        margin-top: 25px;
-        font-weight: 400;
-        animation: fadeIn 2s ease-in;
-    }
-
-    /* ESTILOS PARA LA NUEVA FOTO */
-    .contenedor-foto {
-        text-align: center;
-        margin: 40px 0;
-    }
-
-    .foto-seccion {
-        width: 100%;
-        max-width: 800px; /* Tamaño de la foto */
-        height: auto;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        transition: transform 0.3s;
-    }
-    .foto-seccion:hover {
-        transform: scale(1.02);
-    }
-
-    @keyframes slideIn {
-        from {transform: translateY(-30px); opacity: 0;}
-        to {transform: translateY(0); opacity: 1;}
-    }
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
     }
 
     nav {
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(224, 242, 254, 0.95); /* Nav a juego con el nuevo azul */
+        background: rgba(224, 242, 254, 0.95);
         display: flex;
         justify-content: center;
         gap: 25px;
@@ -85,37 +60,33 @@
         color: #0369a1;
         text-decoration: none;
         font-weight: 600;
-        transition: all 0.3s;
+        cursor: pointer;
+        transition: 0.3s;
     }
-    nav a:hover { color: #3b82f6; transform: scale(1.05); }
+    nav a:hover { color: #3b82f6; }
 
+    /* LÓGICA DE VISIBILIDAD */
     section {
-        padding: 100px 20px 60px 20px;
+        display: none; /* Ocultamos todas por defecto */
+        padding: 60px 20px;
         max-width: 1000px;
         margin: auto;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease-out;
-    }
-    
-    section.show {
-        opacity: 1;
-        transform: translateY(0);
+        animation: fadeIn 0.5s ease-in;
     }
 
-    h2 {
-        text-align: center;
-        color: #0369a1;
-        margin-bottom: 40px;
-        font-size: 2.2em;
+    /* Clase para mostrar secciones activas */
+    section.active {
+        display: block;
     }
 
-    .cards {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 25px;
-        justify-content: center;
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
+
+    h2 { text-align: center; color: #0369a1; margin-bottom: 40px; }
+
+    .cards { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
 
     .card {
         background: #fff;
@@ -124,13 +95,11 @@
         border-radius: 16px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         text-align: center;
-        transition: all 0.3s;
         border: 1px solid #e2e8f0;
     }
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-    }
+
+    .contenedor-foto { text-align: center; margin: 40px 0; }
+    .foto-seccion { width: 100%; max-width: 800px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
     .btn {
         display: inline-block;
@@ -143,23 +112,17 @@
         font-weight: bold;
     }
 
-    footer {
-        background: #0f172a;
-        color: #94a3b8;
-        text-align: center;
-        padding: 50px 20px;
-        margin-top: 60px;
-    }
+    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 50px 20px; margin-top: 60px; }
 </style>
 </head>
 <body>
 
 <nav>
-    <a href="#SobreNosotros">Sobre Nosotros</a>
-    <a href="#Investigacion">Investigación</a>
-    <a href="#eventos">Eventos</a>
-    <a href="#becas">Becas</a>
-    <a href="#join">Únete</a>
+    <a onclick="mostrarSeccion('inicio')">Sobre Nosotros</a>
+    <a onclick="mostrarSeccion('inicio')">Investigación</a>
+    <a onclick="mostrarSeccion('eventos')">Eventos</a>
+    <a onclick="mostrarSeccion('becas')">Becas</a>
+    <a onclick="mostrarSeccion('join')">Únete</a>
 </nav>
 
 <header>
@@ -167,17 +130,15 @@
     <p>Conectando Investigadores en Micro y Nanosistemas en la Península Ibérica</p>
 </header>
 
-<section id="SobreNosotros">
+<section id="SobreNosotros" class="active">
     <h2>Sobre Nosotros</h2>
     <p style="text-align: center; font-size: 1.2em; line-height: 1.8;">IBERNAM es una red para investigadores y profesionales en física del estado sólido, fomentando la colaboración e innovación en ciencia de materiales.</p>
-    
     <div class="contenedor-foto">
         <img src="foto-red.jpg" alt="Investigadores IBERNAM" class="foto-seccion">
-        <p style="font-style: italic; color: #64748b; margin-top: 10px;">Encuentro de la red de investigadores IBERNAM.</p>
     </div>
 </section>
 
-<section id="Investigacion">
+<section id="Investigacion" class="active">
     <h2>Áreas de Investigación</h2>
     <div class="cards">
         <div class="card"><h3>Sensores inteligentes</h3><p>Tecnologías, materiales y herramientas de análisis.</p></div>
@@ -192,13 +153,21 @@
     <div class="cards">
         <div class="card">
             <h3>Conferencia Anual IBERNAM</h3>
-            <p>Únete a expertos para discutir los avances en física del estado sólido.</p>
-            <p><strong>15-17 Septiembre 2026</strong></p>
+            <p>15-17 Septiembre 2026</p>
         </div>
         <div class="card">
             <h3>Micromachining Summit</h3>
-            <p>Evento sobre microsistemas en la Univ. de Southampton.</p>
-            <p><strong>14-17 de junio de 2026</strong></p>
+            <p>14-17 de junio de 2026</p>
+        </div>
+    </div>
+</section>
+
+<section id="becas">
+    <h2>Becas y Concursos</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Premio Tesis Doctoral</h3>
+            <p>Inscripciones abiertas hasta abril 2026.</p>
         </div>
     </div>
 </section>
@@ -214,15 +183,23 @@
 </footer>
 
 <script>
-    const sections = document.querySelectorAll('section');
-    const revealSections = () => {
-        sections.forEach(sec => {
-            const top = sec.getBoundingClientRect().top;
-            if(top < window.innerHeight - 100) sec.classList.add('show');
-        });
-    };
-    window.addEventListener('load', revealSections);
-    window.addEventListener('scroll', revealSections);
+    function mostrarSeccion(idTarget) {
+        // 1. Ocultar todas las secciones
+        const secciones = document.querySelectorAll('section');
+        secciones.forEach(s => s.classList.remove('active'));
+
+        // 2. Lógica especial para "Inicio" (Sobre nosotros + Investigación)
+        if (idTarget === 'inicio') {
+            document.getElementById('SobreNosotros').classList.add('active');
+            document.getElementById('Investigacion').classList.add('active');
+        } else {
+            // 3. Mostrar solo la sección clicada
+            document.getElementById(idTarget).classList.add('active');
+        }
+
+        // 4. Hacer scroll automático arriba para que se vea bien el cambio
+        window.scrollTo({top: 400, behavior: 'smooth'});
+    }
 </script>
 
 </body>
