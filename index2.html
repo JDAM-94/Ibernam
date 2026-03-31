@@ -11,30 +11,31 @@
         padding: 0;
         scroll-behavior: smooth;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #f4f4f4;
-        color: #333;
+        background: #f8fafc; /* Gris azulado muy tenue de fondo */
+        color: #334155;
     }
+    
     header {
-        background: #1e3a8a;
+        background: #3b82f6; /* AZUL MÁS CLARO */
         color: #fff;
         text-align: center;
-        padding: 100px 20px 80px 20px; /* Ajustado para el nav fijo */
+        padding: 120px 20px 100px 20px;
         position: relative;
         overflow: hidden;
     }
     
-    /* ESTILOS PARA EL LOGO */
     .header-logo {
-        max-width: 600px; /* Ajusta este valor según el logo */
+        max-width: 600px;
         height: auto;
         display: block;
-        margin: 0 auto; /* Centrado horizontal */
-        animation: slideIn 1s ease-out; /* Mantiene la animación original */
+        margin: 0 auto;
+        animation: slideIn 1s ease-out;
     }
 
     header p {
         font-size: 1.3em;
-        margin-top: 10px;
+        margin-top: 15px;
+        font-weight: 300;
         animation: fadeIn 2s ease-in;
     }
 
@@ -51,21 +52,24 @@
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(30, 58, 138, 0.95);
+        background: rgba(59, 130, 246, 0.9); /* AZUL CLARO CON TRANSPARENCIA */
         display: flex;
         justify-content: center;
-        gap: 20px;
-        padding: 15px 0;
+        gap: 25px;
+        padding: 18px 0;
         z-index: 1000;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
+    
     nav a {
         color: #fff;
         text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s;
+        font-weight: 600;
+        font-size: 0.95em;
+        transition: all 0.3s;
     }
-    nav a:hover { color: #ffd700; }
+    nav a:hover { color: #ffd700; transform: scale(1.05); }
 
     section {
         padding: 100px 20px 60px 20px;
@@ -83,56 +87,64 @@
 
     h2 {
         text-align: center;
-        color: #1e3a8a;
+        color: #3b82f6; /* AZUL MÁS CLARO EN TÍTULOS */
         margin-bottom: 40px;
-        font-size: 2em;
+        font-size: 2.2em;
+        font-weight: 700;
     }
 
     .cards {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 25px;
         justify-content: center;
     }
 
     .card {
         background: #fff;
-        padding: 25px;
+        padding: 30px;
         flex: 1 1 280px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         text-align: center;
-        transition: transform 0.3s, box-shadow 0.3s;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        transition: all 0.3s;
+        border: 1px solid #e2e8f0;
     }
     .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
+        border-color: #3b82f6;
     }
+
+    .card h3 { color: #1e293b; margin-bottom: 15px; }
 
     .btn {
         display: inline-block;
-        background: #1e3a8a;
+        background: #3b82f6; /* BOTÓN AZUL CLARO */
         color: #fff;
-        padding: 12px 25px;
-        border-radius: 8px;
+        padding: 14px 35px;
+        border-radius: 50px; /* Bordes más redondeados para un look moderno */
         text-decoration: none;
-        margin-top: 15px;
-        transition: background 0.3s;
+        margin-top: 20px;
+        transition: all 0.3s;
         font-weight: bold;
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
     }
-    .btn:hover { background: #ffd700; color: #1e3a8a; }
+    .btn:hover { 
+        background: #2563eb; 
+        box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+        transform: scale(1.05);
+    }
 
     footer {
-        background: #111827;
-        color: #fff;
+        background: #0f172a;
+        color: #94a3b8;
         text-align: center;
-        padding: 40px 20px;
-        margin-top: 40px;
+        padding: 50px 20px;
+        margin-top: 60px;
     }
-    footer a { margin: 0 10px; text-decoration: none; }
+    footer a { margin: 0 10px; text-decoration: none; transition: color 0.3s; }
+    footer a:hover { color: #fff; }
 </style>
 </head>
 <body>
@@ -152,7 +164,7 @@
 
 <section id="SobreNosotros">
     <h2>Sobre Nosotros</h2>
-    <p style="text-align: center; font-size: 1.1em; line-height: 1.6;">IBERNAM es una red para investigadores y profesionales en física del estado sólido, fomentando la colaboración, el intercambio de conocimientos y la innovación en ciencia de materiales.</p>
+    <p style="text-align: center; font-size: 1.2em; line-height: 1.8; color: #475569;">IBERNAM es una red para investigadores y profesionales en física del estado sólido, fomentando la colaboración, el intercambio de conocimientos y la innovación en ciencia de materiales.</p>
 </section>
 
 <section id="Investigacion">
@@ -161,7 +173,7 @@
         <div class="card"><h3>Sensores inteligentes</h3><p>Proponiendo tecnologías, materiales y herramientas de análisis.</p></div>
         <div class="card"><h3>Microsistemas y Nanotecnología</h3><p>Desvelando el poder de la pequeña escala.</p></div>
         <div class="card"><h3>Materiales avanzados</h3><p>Investigando superconductores, aislantes topológicos y más.</p></div>
-        <div class="card"><h3>Electrónica y Tratamiento de datos</h3><p>Explorando caminos para el desarrollo de dispositivos innovadores apoyados por AI y Big Data.</p></div>
+        <div class="card"><h3>Electrónica y Datos</h3><p>Explorando el desarrollo de dispositivos innovadores apoyados por AI y Big Data.</p></div>
     </div>
 </section>
 
@@ -171,67 +183,34 @@
         <div class="card">
             <h3>Conferencia Anual IBERNAM</h3>
             <p>Únete a expertos para discutir los avances recientes en física del estado sólido.</p>
-            <p><strong>Fecha:</strong> 15-17 Septiembre 2026</p>
+            <p><strong>15-17 Septiembre 2026</strong></p>
         </div>
         <div class="card">
-            <h3>Serie de Webinars</h3>
-            <p>Charlas mensuales de científicos líderes en el campo.</p>
-            <p><strong>Próximo:</strong> 10 Abril 2026</p>
-        </div>
-        <div class="card">
-            <h3>Micromachining Summit 2026</h3>
-            <p>Evento sobre microsistemas y semiconductores en la Universidad de Southampton (Reino Unido). <a href="https://es.linkedin.com/posts/redibernam_29th-world-micromachining-summit-activity-7437459898541662208-bVWR" target="_blank">Más información aquí.</a></p>
-            <p><strong>Fechas:</strong> 14 al 17 de junio de 2026</p>
-        </div>
-        <div class="card">
-            <h3>Encuentro conjunto IBERNAM - CMC2</h3>
-            <p>Encuentro en la Universidad de Toulouse (Francia). Envía tu abstract antes del 20 de abril. <a href="https://es.linkedin.com/posts/redibernam_ibernam-cmc2-senforfire-activity-7430695380230647808-2B1y" target="_blank">Ver detalles.</a></p>
-            <p><strong>Fechas:</strong> 20 al 22 de mayo de 2026</p>
+            <h3>Micromachining Summit</h3>
+            <p>Evento sobre microsistemas en la Univ. de Southampton. <a href="#" style="color: #3b82f6;">Ver info.</a></p>
+            <p><strong>14-17 de junio de 2026</strong></p>
         </div>
     </div>
 </section>
 
-<section id="becas">
-    <h2>Becas, contratos y concursos</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Premio la mejor Tesis Doctoral 2024-2025</h3>
-            <p>Inscríbete y opta a premios en metálico (1000€ y 500€). <a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Flnkd%2Ein%2FeHR24pyT&urlhash=xdiX&trk=public_post-text" target="_blank">Más información.</a></p>
-            <p><strong>Fecha:</strong> Hasta el 30 de abril de 2026</p>
-        </div>
-        <div class="card">
-            <h3>Premio diseño de Logo y Web</h3>
-            <p>Participa y gana hasta 1000€ por el mejor diseño. <a href="https://es.linkedin.com/posts/redibernam_convocatoriaconcursoweb-fdopdf-activity-7408478791683112961-aWsC" target="_blank">Bases del concurso.</a></p>
-            <p><strong>Fecha límite:</strong> 31 de marzo de 2026</p>
-        </div>
-    </div>
-</section>
-
-<section id="join">
+<section id="join" style="text-align: center;">
     <h2>Únete a IBERNAM</h2>
-    <p style="text-align: center;">Hazte miembro para acceder a nuestra red, participar en eventos y colaborar con colegas.</p>
-    <div style="text-align: center;">
-        <a class="btn" href="mailto:contacto@ibernam.org">Envíanos un correo para unirte →</a>
-    </div>
+    <p>Hazte miembro para acceder a nuestra red y colaborar con colegas.</p>
+    <a class="btn" href="mailto:contacto@ibernam.org">Enviar correo para unirme →</a>
 </section>
 
 <footer>
-    <p>&copy; 2026 IBERNAM | <a href="#" style="color:#ffd700">LinkedIn</a> | <a href="#" style="color:#ffd700">Twitter</a></p>
+    <p>&copy; 2026 IBERNAM | <a href="#" style="color:#3b82f6">LinkedIn</a> | <a href="#" style="color:#3b82f6">Twitter</a></p>
 </footer>
 
 <script>
     const sections = document.querySelectorAll('section');
-    
     const revealSections = () => {
         sections.forEach(sec => {
             const top = sec.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if(top < windowHeight - 50) {
-                sec.classList.add('show');
-            }
+            if(top < window.innerHeight - 100) sec.classList.add('show');
         });
     };
-
     window.addEventListener('load', revealSections);
     window.addEventListener('scroll', revealSections);
 </script>
