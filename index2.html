@@ -97,4 +97,118 @@
         border-radius: 50px;
         text-decoration: none;
         margin-top: 20px;
-        font
+        font-weight: bold;
+    }
+
+    footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 40px 20px; margin-top: 60px; }
+</style>
+</head>
+<body>
+
+<nav>
+    <a onclick="cambiarSeccion('SobreNosotros')">Sobre Nosotros</a>
+    <a onclick="cambiarSeccion('Investigacion')">Investigación</a>
+    <a onclick="cambiarSeccion('eventos')">Eventos</a>
+    <a onclick="cambiarSeccion('becas')">Becas</a>
+    <a onclick="cambiarSeccion('join')">Únete</a>
+</nav>
+
+<header>
+    <img src="logo-ibernam.png" alt="IBERNAM" class="header-logo">
+    <p>Conectando Investigadores en Micro y Nanosistemas en la Península Ibérica</p>
+</header>
+
+<section id="SobreNosotros" class="active">
+    <h2>Sobre Nosotros</h2>
+    <p style="text-align: center; font-size: 1.2em; line-height: 1.8; max-width: 800px; margin: 0 auto 40px auto;">
+        IBERNAM es una red para investigadores y profesionales en física del estado sólido, fomentando la colaboración, el intercambio de conocimientos y la innovación en ciencia de materiales.
+    </p>
+    <div class="contenedor-foto">
+        <img src="foto-red.jpg" alt="Encuentro IBERNAM" class="foto-seccion">
+    </div>
+</section>
+
+<section id="Investigacion">
+    <h2>Áreas de Investigación</h2>
+    <div class="cards">
+        <div class="card"><h3>Sensores inteligentes</h3><p>Proponiendo tecnologías, materiales y herramientas de análisis.</p></div>
+        <div class="card"><h3>Microsistemas y Nanotecnología</h3><p>Desvelando el poder de la pequeña escala.</p></div>
+        <div class="card"><h3>Materiales avanzados</h3><p>Investigando superconductores, aislantes topológicos y más.</p></div>
+        <div class="card"><h3>Electrónica y Datos</h3><p>Dispositivos innovadores apoyados por AI y Big Data.</p></div>
+    </div>
+</section>
+
+<section id="eventos">
+    <h2>Eventos y Talleres</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Conferencia Anual IBERNAM</h3>
+            <p>15-17 Septiembre 2026</p>
+        </div>
+        <div class="card">
+            <h3>Micromachining Summit 2026</h3>
+            <p><a href="https://es.linkedin.com/posts/redibernam_29th-world-micromachining-summit-activity-7437459898541662208-bVWR" target="_blank">Más información aquí</a></p>
+            <p><strong>Fechas:</strong> 14-17 de junio de 2026</p>
+        </div>
+        <div class="card">
+            <h3>Encuentro IBERNAM - CMC2</h3>
+            <p><a href="https://es.linkedin.com/posts/redibernam_ibernam-cmc2-senforfire-activity-7430695380230647808-2B1y" target="_blank">Envía tu abstract aquí</a></p>
+            <p><strong>Fechas:</strong> 20-22 de mayo de 2026</p>
+        </div>
+    </div>
+</section>
+
+<section id="becas">
+    <h2>Becas, contratos y concursos</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Premio mejor Tesis Doctoral</h3>
+            <p><a href="https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Flnkd%2Ein%2FeHR24pyT&urlhash=xdiX&trk=public_post-text" target="_blank">Ver bases</a></p>
+            <p><strong>Plazo:</strong> Hasta el 30 de abril de 2026</p>
+        </div>
+        <div class="card">
+            <h3>Premio Diseño Logo y Web</h3>
+            <p><a href="https://es.linkedin.com/posts/redibernam_convocatoriaconcursoweb-fdopdf-activity-7408478791683112961-aWsC" target="_blank">Más información</a></p>
+            <p><strong>Fecha límite:</strong> 31 de marzo de 2026</p>
+        </div>
+    </div>
+</section>
+
+<section id="join">
+    <div style="text-align: center;">
+        <h2>Únete a IBERNAM</h2>
+        <p>Hazte miembro para acceder a nuestra red y colaborar con colegas.</p>
+        <a class="btn" href="mailto:contacto@ibernam.org">Envíanos un correo para unirme →</a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 IBERNAM | <a href="#" style="color: #3b82f6;">LinkedIn</a> | <a href="#" style="color: #3b82f6;">Twitter</a></p>
+</footer>
+
+<script>
+    function cambiarSeccion(idTarget) {
+        // 1. Obtener todas las secciones
+        const secciones = document.getElementsByTagName('section');
+        
+        // 2. Iterar y ocultar todas
+        for (let i = 0; i < secciones.length; i++) {
+            secciones[i].classList.remove('active');
+        }
+
+        // 3. Mostrar la deseada
+        const target = document.getElementById(idTarget);
+        if (target) {
+            target.classList.add('active');
+        }
+
+        // 4. Scroll suave al área de contenido
+        window.scrollTo({
+            top: 400,
+            behavior: 'smooth'
+        });
+    }
+</script>
+
+</body>
+</html>
